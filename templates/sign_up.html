@@ -1,0 +1,86 @@
+<html lang="en">
+   <head>
+ 	<title>My Python Web App</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+	<link rel="stylesheet" href="/static/styles.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='flip-card.css') }}">
+	<!--<link rel="stylesheet" href="{{ url_for('static', filename='login-form.css') }}">--->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    
+   </head>
+
+   <body>
+     <h2> My First Python Web App </h2>
+
+		{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+	{% block body %}{% endblock %}
+
+       <div class="container p-3 my-3 <!--bg-primary--> d-flex justify-content-center align-middle">
+	  <!-- <div class="col-lg-4 col-md-4 col-sm-4"> --->
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover'); text-center">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class="img-fluid" src="/static/images/login_logo.jpeg" alt="card image"></p>
+                                    <h4 class="card-title">Log In Card</h4>
+                                    <p class="card-text">Web App Tests Text</p>
+                                    <!---  <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>  --->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+				<div class="container p-3 my-3 <!---bg-primary---> d-flex justify-content-center align-middle">
+                                <div class="card-body text-center">
+				    <h4 class="card-title">LogIn</h4>
+				     <p class="card-text">
+				     <form action="/sign-up" method="POST">
+        			    	<div class="form-group">
+					   <label> Username</label>
+					   <input class="form-control" type="text" name="username">
+					</div>
+					<div class="form-group">
+                                           <label>Email</label>
+                                           <input class="form-control" type="email" name="email">
+                                        </div>
+					<div class="form-group">
+                                           <label>Password</label>
+                                           <input class="form-control" type="password" name="password">
+                                        </div>
+					<button type="submit" class="btn btn-primary"> Log In</button>
+					<button type="submit" class="btn btn-primary"> Sign Up</button>	 
+				     </form></p>
+				      
+			        </div>
+				</div>
+                            </div>
+			</div>
+
+                    </div>
+                </div>
+           <!-- </div> --->
+	 </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    function delete_flash(flash){
+        $(flash).parent().remove()
+    }
+</script>
+
+   </body>
+
+
+</html>
