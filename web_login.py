@@ -48,7 +48,7 @@ def sign_up():
 		user_password = request.form['password']
 		#db_email = ""
 
-		conn2 = psycopg2.connect("dbname='dnecs' user='admin' password='Nes@2089' host='localhost' port='5432'")
+		conn2 = psycopg2.connect("dbname='dnecs' user='admin' password='admin' host='localhost' port='5432'")
         	# Open a cursor to perform database operations
 		cur2 = conn2.cursor()
 		#print(conn2.get_dsn_parameters(),"\n")
