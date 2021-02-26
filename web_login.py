@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, flash, url_for
+from flask import Flask, render_template, request, redirect, session, flash, url_for, escape
 import psycopg2
 #from passlib.hash import md5_crypt
 #from passlib.hash import bcrypt
@@ -17,10 +17,11 @@ app.secret_key = b'2%N@0^by##@!k)vx~'
 #login_manager = LoginManager()
 
 # This shows first page when browser loads. Need to index.html
+# Login/Logout Sessions working though need fix
 @app.route('/')
 def index():
 	if 'username' in session:
-		username = session['username']
+		return 'you are already logged as, {}!'.format(escape(session['username'])) # Research more on "escape"
 	return render_template('sign_up.html')
 
 
