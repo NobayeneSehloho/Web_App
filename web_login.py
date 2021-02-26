@@ -47,17 +47,13 @@ def sign_up():
 		username = request.form['username']
 		email = request.form['email']
 		user_password = request.form['password']
-		#db_email = ""
 
 		conn2 = psycopg2.connect("dbname='dnecs' user='admin' password='admin' host='localhost' port='5432'")
-        	# Open a cursor to perform database operations
+        # Open a cursor to perform database operations
 		cur2 = conn2.cursor()
 		#print(conn2.get_dsn_parameters(),"\n")
 		cur2.execute("""SELECT email, username FROM userlogin WHERE password=crypt(%s, password);""", [user_password])
 
-		#for email_char in str(cur2.fetchone()):
-		#	db_email += email_char
-		#print("DB MATCH =", db_email, email)
 		db_email = str(cur2.fetchone())
 		
 		if not request.form['email'] or not request.form['password']:
